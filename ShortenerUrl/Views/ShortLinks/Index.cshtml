@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ShortenerUrl.Models.ShortLinkItemViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список ссылок</h1>
+
+<p>
+    <a asp-action="Create">Добавить новую ссылку</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCreted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountClicks)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCreted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountClicks)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
